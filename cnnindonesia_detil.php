@@ -1,40 +1,41 @@
 <?php 
 
-include 'koneksi.php';
+//include 'koneksi.php';
+//
+//$time = time();
+//$title = '';
+//$konten = '';
+//$kategori = '';
+//$penulis = '';
+//$sumber = '';
+//$waktu = '';
+//$img = '';
+//$img_tumb = '';
+//$url = '';
+//$list_id = '';
+//
+//include 'simple_html_dom.php';
+//$conn = new mysqli($servername, $username, $password, $dbname);
+//
+//$sql = "select * from listurl where sumber = 'cnnindonesia.com' and is_tembak = '0' limit 1";
+//$result = $conn->query($sql);
+//
+//if ($result->num_rows > 0) {
+//    // output data of each row
+//    while($row = $result->fetch_assoc()) {
+//        $url = $row["url"];
+//        $list_id = $row["id"];
+//        $img_tumb = 'http:'.$row["img_tumb"];
+//        $title = $row["title"];
+//        $sumber = $row["sumber"];
+//    }
+//} else {
+//    $conn->close();
+//    echo "No data: " ;
+//    die();
+//}
 
-$time = time();
-$title = '';
-$konten = '';
-$kategori = '';
-$penulis = '';
-$sumber = '';
-$waktu = '';
-$img = '';
-$img_tumb = '';
-$url = '';
-$list_id = '';
-
-include 'simple_html_dom.php';
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-$sql = "select * from listurl where sumber = 'cnnindonesia.com' and is_tembak = '0' limit 1";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        $url = $row["url"];
-        $list_id = $row["id"];
-        $img_tumb = $row["img_tumb"];
-        $title = $row["title"];
-        $sumber = $row["sumber"];
-    }
-} else {
-    $conn->close();
-    echo "No data: " ;
-    die();
-}
-
+$img_tumb = 'http:'.$img_tumb;
 $html = file_get_html($url);
 //echo $html;die;
 //$konten
@@ -55,7 +56,7 @@ $waktu = trim(mysql_escape_string($div_waktu->plaintext));
 
 //$img
 $div_img = $ret->find('div[class=pic_artikel] img',0);
-$img = trim(mysql_escape_string('http://'.$div_img->src));
+$img = trim(mysql_escape_string('http:'.$div_img->src));
 
 // img_tumb
 if(!$img_tumb){
