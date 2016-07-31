@@ -34,12 +34,7 @@
 //    echo "No data: " ;
 //    die();
 //}
-if(parse_url($url) != 'cnnindonesia.com'){
-    $sql = "UPDATE listurl SET is_tembak = '1' WHERE id='$list_id'";
-    $conn->query($sql);
-    $conn->close();
-    die;
-}
+
 $img_tumb = 'http:'.$img_tumb;
 $html = file_get_html($url);
 //echo $html;die;
