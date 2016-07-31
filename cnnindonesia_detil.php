@@ -34,7 +34,12 @@
 //    echo "No data: " ;
 //    die();
 //}
-
+if(parse_url($url) != 'cnnindonesia.com'){
+    $sql = "UPDATE listurl SET is_tembak = '1' WHERE id='$list_id'";
+    $conn->query($sql);
+    $conn->close();
+    die;
+}
 $img_tumb = 'http:'.$img_tumb;
 $html = file_get_html($url);
 //echo $html;die;
@@ -45,9 +50,12 @@ $ret = $html->find('div[class=content_detail]',0);
 $div_penulis = $ret->find('div[class=author]',0);
 $penulis = trim(mysql_escape_string($div_penulis->plaintext));
 
-$div_konten = $ret->find('div[id=detail]',0);
-$element = $div_konten->find('table',0);
-$element->outertext='';
+//$div_konten = $ret->find('div[id=detail]',0);
+if($div_konten = $ret->find('div[id=detail]',0)){
+    $element = $div_konten->find('table',0);
+    $element->outertext='';
+}
+
 $konten = trim(mysql_escape_string($div_konten->outertext));
 
 //$waktu
