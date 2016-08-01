@@ -17,7 +17,7 @@
 //include 'simple_html_dom.php';
 //$conn = new mysqli($servername, $username, $password, $dbname);
 //
-//$sql = "select * from listurl where sumber = 'cnnindonesia.com' and is_tembak = '0' limit 1";
+//$sql = "select * from listurl where sumber = 'news.detik.com' and is_tembak = '0' limit 1";
 //$result = $conn->query($sql);
 //
 //if ($result->num_rows > 0) {
@@ -25,7 +25,7 @@
 //    while($row = $result->fetch_assoc()) {
 //        $url = $row["url"];
 //        $list_id = $row["id"];
-//        $img_tumb = 'http:'.$row["img_tumb"];
+//        $img_tumb = $row["img_tumb"];
 //        $title = $row["title"];
 //        $sumber = $row["sumber"];
 //    }
@@ -35,39 +35,44 @@
 //    die();
 //}
 
-$img_tumb = 'http:'.$img_tumb;
 $html = file_get_html($url);
 //echo $html;die;
 //$konten
-$ret = $html->find('div[class=content_detail]',0);
+
+$detail_content = $html->find('div[class=kcm-read]',0);
+$date = $detail_content->find('div[class=kcm-date]',0);
+
+$stringdate = explode('<br>',$date);
 
 //$penulis
-$div_penulis = $ret->find('div[class=author]',0);
-$penulis = trim(mysql_escape_string($div_penulis->plaintext));
-
-//$div_konten = $ret->find('div[id=detail]',0);
-if($div_konten = $ret->find('div[id=detail]',0)){
-    $element = $div_konten->find('table',0);
-    $element->outertext='';
+if(isset($stringdate[1])){
+	$waktu = trim(mysql_escape_string(strip_tags($stringdate[1])));
+	$penulis = trim(mysql_escape_string(strip_tags($stringdate[0])));
+}else{
+	$waktu = trim(mysql_escape_string(strip_tags($stringdate[0])));
+	$penulis = '';
 }
-
-$konten = trim(mysql_escape_string($div_konten->outertext));
-
 //$waktu
-$div_waktu = $ret->find('div[class=date]',0);
-$waktu = trim(mysql_escape_string($div_waktu->plaintext));
 
 //$img
-$div_img = $ret->find('div[class=pic_artikel] img',0);
-$img = trim(mysql_escape_string('http:'.$div_img->src));
-
-// img_tumb
-if(!$img_tumb){
-    $img_tumb = $img.'?w=200&q=90';
+$img = null;
+$img_tumb = null;
+if($div_img = $detail_content->find('div[class=photo] img',0)){
+	$img = trim(mysql_escape_string($div_img->src));
+	$img_tumb = str_replace('/data/','/thumb/data/',$img).'?&x=200&v=200';
 }
 
-//$kategori
-$div_kategori = $ret->find('div[class=breadcrumb] a',1);
+
+$div_konten = $detail_content->find('div[class=kcm-read-text]',0);
+if($element = $div_konten->find('strong')){
+	foreach($element as $e){
+		$e->outertext='';
+	}
+}
+$konten = trim(mysql_escape_string($div_konten->outertext));
+
+//$kategori ok
+$div_kategori = $detail_content->find('ul[class=kcm-breadcrumb] a',0);
 $kategori = trim(mysql_escape_string($div_kategori->plaintext));
 
 

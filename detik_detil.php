@@ -75,7 +75,7 @@ $sql = "INSERT INTO berita (url, title, konten, kategori, penulis, sumber, waktu
         . "VALUES ('$url', '$title','$konten', '$kategori', '$penulis', '$sumber', '$waktu', '$time', '$img', '$img_tumb')";
 
 if ($conn->query($sql) === TRUE) {
-    $sql = "UPDATE listurl SET is_tembak = '1' WHERE id='$list_id'";
+    $sql = "UPDATE listurl SET is_sukses = '1' WHERE id='$list_id'";
     $conn->query($sql);
 } else {
     echo "Error: " . $conn->error;

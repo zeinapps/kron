@@ -29,7 +29,8 @@ if ($result->num_rows > 0) {
         $title = $row["title"];
         $sumber = $row["sumber"];
     }
-    
+    $sql = "UPDATE listurl SET is_tembak = '1' WHERE id='$list_id'";
+    $conn->query($sql);
     
 } else {
     $conn->close();
@@ -41,4 +42,6 @@ if($sumber == 'cnnindonesia.com'){
     include 'cnnindonesia_detil.php';
 }else if($sumber == 'news.detik.com'){
     include 'detik_detil.php';
+}else if($sumber == 'kompas.com'){
+    include 'kompas_detil.php';
 }
