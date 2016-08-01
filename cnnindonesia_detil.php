@@ -52,7 +52,9 @@ if($div_konten = $ret->find('div[id=detail]',0)){
 }
 
 $konten = trim(mysql_escape_string($div_konten->outertext));
-
+if(!$konten){
+	die;
+}
 //$waktu
 $div_waktu = $ret->find('div[class=date]',0);
 $waktu = trim(mysql_escape_string($div_waktu->plaintext));

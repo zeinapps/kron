@@ -72,7 +72,9 @@ if($element = $div_konten->find('strong')){
 	}
 }
 $konten = trim(mysql_escape_string($div_konten->outertext));
-
+if(!$konten){
+	die;
+}
 //$kategori ok
 $div_kategori = $detail_content->find('ul[class=kcm-breadcrumb] a',0);
 $kategori = trim(mysql_escape_string($div_kategori->plaintext));

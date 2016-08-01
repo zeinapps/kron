@@ -51,7 +51,9 @@ $penulis = trim(mysql_escape_string($div_penulis->plaintext));
 $div_konten = $ret->find('div[class=detail_text]',0);
 
 $konten = trim(mysql_escape_string($div_konten->outertext));
-
+if(!$konten){
+	die;
+}
 //$waktu
 $div_waktu = $jdl->find('div[class=date]',0);
 $waktu = trim(mysql_escape_string($div_waktu->plaintext));
