@@ -57,11 +57,13 @@ if(isset($stringdate[1])){
 //$img
 $img = null;
 $img_tumb = null;
-if($div_img = $detail_content->find('div[class=photo] img',0)){
-	$img = trim(mysql_escape_string($div_img->src));
-	$img_tumb = str_replace('/data/','/thumb/data/',$img).'?&x=200&v=200';
-}
+$div_img = $detail_content->find('div[class=photo] img',0);
+$img = trim(mysql_escape_string($div_img->src));
+$img_tumb = str_replace('/data/','/thumb/data/',$img).'?&x=200&v=200';
 
+if(!$img){
+	die;
+}
 
 $div_konten = $detail_content->find('div[class=kcm-read-text]',0);
 if($element = $div_konten->find('strong')){
