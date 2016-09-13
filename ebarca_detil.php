@@ -17,7 +17,7 @@ $list_id = '';
 include 'simple_html_dom.php';
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-$sql = "select * from listurl where is_tembak = '0' ORDER BY RAND() limit 1";
+$sql = "select * from ebarca_listurl where is_tembak = '0' ORDER BY RAND() limit 1";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -29,12 +29,12 @@ if ($result->num_rows > 0) {
         $title = $row["title"];
         $sumber = $row["sumber"];
     }
-    $sql = "UPDATE listurl SET is_tembak = '1' WHERE id='$list_id'";
+    $sql = "UPDATE ebarca_listurl SET is_tembak = '1' WHERE id='$list_id'";
     $conn->query($sql);
     
 } else {
     $conn->close();
-    echo "No data: " ;
+    echo "ebarca No data: " ;
     die();
 }
 

@@ -73,11 +73,11 @@ $kategori = 'kategori';
 
 
 
-$sql = "INSERT INTO berita (url, title, konten, kategori, penulis, sumber, waktu, time, img , img_tumb) "
+$sql = "INSERT INTO ebarca_berita (url, title, konten, kategori, penulis, sumber, waktu, time, img , img_tumb) "
         . "VALUES ('$url', '$title','$konten', '$kategori', '$penulis', '$sumber', '$waktu', '$time', '$img', '$img_tumb')";
 
 if ($conn->query($sql) === TRUE) {
-    $sql = "UPDATE listurl SET is_sukses = '1' WHERE id='$list_id'";
+    $sql = "UPDATE ebarca_listurl SET is_sukses = '1' WHERE id='$list_id'";
     $conn->query($sql);
 } else {
     echo "Error: " . $conn->error;

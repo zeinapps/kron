@@ -20,7 +20,7 @@ foreach ($ul->find('li[class=col-md-4]') as $li) {
     $img_tumb = trim($li->find('div[class=thumb-news]', 0)->$property);
     $sumber = 'bola.okezone.com';
     //            var_dump($url.' '.$title.' '.$img_tumb.' '.$sumber.' ');die;
-    $sql = "INSERT INTO listurl (url,title,img_tumb,sumber) VALUES ('$url','$title','$img_tumb','$sumber')";
+    $sql = "INSERT INTO ebarca_listurl (url,title,img_tumb,sumber) VALUES ('$url','$title','$img_tumb','$sumber')";
     $conn->query($sql);
 }
 

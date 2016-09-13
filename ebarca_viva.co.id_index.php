@@ -18,7 +18,7 @@ foreach ($ul->find('li') as $li) {
     $img_tumb = trim($li->find('a div[class=thumbcontainer] img', 0)->src);
     $sumber = 'viva.co.id';
     //            var_dump($url.' '.$title.' '.$img_tumb.' '.$sumber.' ');die;
-    $sql = "INSERT INTO listurl (url,title,img_tumb,sumber) VALUES ('$url','$title','$img_tumb','$sumber')";
+    $sql = "INSERT INTO ebarca_listurl (url,title,img_tumb,sumber) VALUES ('$url','$title','$img_tumb','$sumber')";
     $conn->query($sql);
 }
 
