@@ -10,7 +10,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "portalberita";
+$dbname = "ebarca";
 
 //$servername = "localhost";
 //$username = "ready_cron_tes";
