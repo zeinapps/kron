@@ -53,7 +53,7 @@ $conn->close();
 die();
 
 } 
-echo $url;
+
 if($sumber == 'bola.com'){
     include 'ebarca_bola.com_detil.php';
 }else if($sumber == 'bola.okezone.com'){
