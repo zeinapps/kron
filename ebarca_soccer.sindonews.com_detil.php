@@ -73,8 +73,8 @@ $kategori = 'kategori';
 
 
 
-$sql = "INSERT INTO ebarca_berita (url, title, konten, kategori, penulis, sumber, waktu, time, img , img_tumb) "
-        . "VALUES ('$url', '$title','$konten', '$kategori', '$penulis', '$sumber', '$waktu', '$time', '$img', '$img_tumb')";
+$sql = "INSERT INTO ebarca_berita (url, title, konten, kategori, penulis, sumber, waktu, time, img , img_tumb, tag) "
+        . "VALUES ('$url', '$title','$konten', '$kategori', '$penulis', '$sumber', '$waktu', '$time', '$img', '$img_tumb', '$tag')";
 
 if ($conn->query($sql) === TRUE) {
     $sql = "UPDATE ebarca_listurl SET is_sukses = '1' WHERE id='$list_id'";
