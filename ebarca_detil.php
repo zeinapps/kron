@@ -18,7 +18,7 @@ $tag = '';
 include 'simple_html_dom.php';
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-$sql = "select * from ebarca_listurl where is_tembak = '0' ORDER BY id DESC limit 1";
+$sql = "select * from ebarca_listurl where is_tembak = '0' ORDER BY id asc limit 1";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
