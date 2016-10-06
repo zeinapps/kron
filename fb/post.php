@@ -49,7 +49,7 @@ if ($result->num_rows > 0) {
     }
     $sql = "UPDATE berita SET is_fb_post = '1' WHERE id='$id'";
     $conn->query($sql);
-    
+    $conn->close();
 } else {
     $conn->close();
     echo "No data: " ;
