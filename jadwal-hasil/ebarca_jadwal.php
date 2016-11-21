@@ -92,7 +92,9 @@ include '../koneksi.php';
 include '../simple_html_dom.php';
 
 $conn = new mysqli($servername, $username, $password, $dbname);
-
+$deleteAll = "Delete from ebarca_jadwal";
+$conn->query($deleteAll);
+        
 foreach ($alltim as $value) {
     
 $tim = $value['tim'];
@@ -151,6 +153,6 @@ foreach ($html->find('table[class=match-table]') as $li) {
 }
 
 $conn->close();
-die;
+
 
 

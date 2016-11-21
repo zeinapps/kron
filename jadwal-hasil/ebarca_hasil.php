@@ -86,8 +86,8 @@ $BLN = array(
 	'Desember' => '12',
 );
 
-include '../koneksi.php';
-include '../simple_html_dom.php';
+//include '../koneksi.php';
+//include '../simple_html_dom.php';
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -171,6 +171,5 @@ foreach ($html->find('table[class=match-table]') as $li) {
 }
 
 $conn->close();
-die;
 
 
